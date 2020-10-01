@@ -1,25 +1,43 @@
+//declare criteria variables as arrays
+var length = 8-128;
+var characterLower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var characterUpper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var characterNumber = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9",];
+var characterSpecial =  ["!,", "#", "$", "%", "&", "'", "'", "(", ")", "*", "+", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\", ", "{", "|", "}", "~","]", "^", "_"];
+
+
+
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 function generatePassword () {
 
-//declare variables that will take inputs 
-var length = prompt("How many characters would you like?");
-var characterLower = confirm("Do you want Lower case letters?");
-var characterUpper = confirm("Do you want Upper case letters?");
-var characterNumber = confirm("Do you want Numbers?");
-var characterSpecial = confirm("Do you want Special characters?");
-//declare criteria variables as arrays
-var length = 8-128;
-var characterLower = ["a-z"];
-var characterUpper = ["A-Z"];
-var characterNumber = ["0-9"];
-var characterSpecial =  ["!,", #, $, %, &, ', ', (, ), *, +, -, ., /, :, ;, <, =, >, ?, @, [, \, ], ^, _, `, {, |, }, ~,"];
+
+//declare variables that will take inputs - wrap inside function
+
+
+var userlength = prompt("How many characters would you like, between 8-128?");
+var usercharacterLower = confirm("Do you want Lower case letters?");
+var usercharacterUpper = confirm("Do you want Upper case letters?");
+var usercharacterNumber = confirm("Do you want Numbers?");
+var usercharacterSpecial = confirm("Do you want Special characters?");
+  console.log(length);
+  console.log(characterLower);
+  console.log(characterNumber);
+  console.log(characterSpecial);
+
+
+function length() {
+  var userlength = prompt("How many characters would you like, between 8-128?");
+  console.log(userlength);
+}
+
 
 if (characterLower){
-  alert
+  alert("You want lower case");
 }
 else {
-  alert
+  alert ();
+
 }
 
 if (characterUpper){
@@ -43,22 +61,15 @@ else {
   alert
 }
 
-
-
-
-
-
-
-
-
-
-
+//evaluations of if input is correct
+\
 
 }
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
+  length();
 
   passwordText.value = password;
 
