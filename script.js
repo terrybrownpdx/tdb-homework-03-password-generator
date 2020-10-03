@@ -4,120 +4,71 @@ var characterLower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l"
 var characterUpper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var characterNumber = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9",];
 var characterSpecial = ["!,", "#", "$", "%", "&", "'", "'", "(", ")", "*", "+", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\", ", "{", "|", "}", "~", "]", "^", "_"];
-//var lengthResult = result(userLength);
-//var lowerResult = result(userCharacterLower);
-//var upperResult = result(userCharacterUpper);
-//var numberResult = result(userCharacterNumber);
-//var specialResult = result(userCharacterSpecial);
 
 //declare variables that will take inputs - wrap inside function
 //evaluations of if input is correct
-var userLength = prompt("How many characters would you like, between 8-128?");
+var userLength = 0
+
+while(userLength < 8 || userLength > 128) {
+  userLength = prompt("How many characters would you like, between 8-128?");
+}
 alert("Your password will be " + userLength + " characters long");
 
 var userCharacterLower = confirm("Do you want Lower case letters?");
-if (userCharacterLower === true) {
-  alert("Yes to lower case");
-}
-else if (userCharacterLower === false) {
-  alert("No to lower case");
-}
-else {
-  alert("Incorrect command.  Please try again");
-}
-
 var userCharacterUpper = confirm("Do you want Upper case letters?");
-if (userCharacterUpper === true) {
-  alert("Yes to upper case");
-}
-else if (userCharacterUpper === false) {
-  alert("No to upper case");
-}
-else {
-  alert("Incorrect command.  Please try again");
-}
-
 var userCharacterNumber = confirm("Do you want Numbers?");
-if (userCharacterNumber === true) {
-  alert("Yes to numbers");
-}
-else if (userCharacterNumber === false) {
-  alert("No to numbers");
-}
-else {
-  alert("Incorrect command.  Please try again");
-}
-
 var userCharacterSpecial = confirm("Do you want Special characters?");
-if (userCharacterSpecial === true) {
-  alert("Yes to special characters");
-}
-else if (userCharacterSpecial === false) {
-  alert("No to special characters");
-}
-else {
-  alert("Incorrect command.  Please try again");
-}
-//declare function
-//function functionname (arr){ 
-//for (var i = 0; i < arr.length; i++) {
-//console.log(arr[i]);
-//}
-//console.log("......");
-//}
-function lengthResult(userLength) {
-  return ("Your password will be" + userLength + "characters long");
-}
-var lengthResult = result(userLength);
-console.log(result);
-
-
-function lowerResult(userCharacterLower) {
-  return (userCharacterLower);
-}
-var lowerResult = result(userCharacterLower);
-console.log(result);
-
-
-function upperResult(userCharacterUpper) {
-  return (userCharacterUpper);
-}
-var upperResult = result(userCharacterUpper);
-console.log(result);
-
-
-function numberResult(userCharacterNumber) {
-  return (userCharacterNumber);
-}
-var numberResult = result(userCharacterNumber);
-console.log(result);
-
-
-function specialResult(userCharacterSpecial) {
-  return (userCharacterSpecial);
-}
-var specialResult = result(userCharacterSpecial);
-console.log(result);
-
-
-
-
 
 // Assignment Code
+//acceptedCharacters.concat(characterLower); 
+//console.log(acceptedCharacters.concat(characterLower));
+
 var generateBtn = document.querySelector("#generate");
+
 function generatePassword() {
+var acceptedCharacters=[]
+var password=""
+
+  if (userCharacterLower === true) {
+    acceptedCharacters=acceptedCharacters.concat(characterLower)
+  }
+  
+
+  if (userCharacterUpper === true) {
+    acceptedCharacters=acceptedCharacters.concat(characterUpper)
+    
+  }
+
+  if (userCharacterNumber === true) {
+    acceptedCharacters=acceptedCharacters.concat(characterNumber)
+    
+  }
+
+  if (userCharacterSpecial === true) {
+    acceptedCharacters=acceptedCharacters.concat(characterSpecial)
+
+  }
+
+  for (var x = 0; x < userLength; x++) {
+    var rand = Math.floor(Math.random() * acceptedCharacters.length);
+    password+=acceptedCharacters[rand];
+    console.log(password, rand);
+  }
+    return password
 }
 
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+  // Add event listener to generate button
+  generateBtn.addEventListener("click", writePassword, {
 
+  });
 
-  passwordText.value = password;
+  // Write password to the #password input
+  function writePassword() {
+    var password = generatePassword();
+    var passwordText = document.querySelector("#password");
 
-  prompt(password)
-}
+    passwordText.value = password;
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+    //prompt(password)
+  }
+
